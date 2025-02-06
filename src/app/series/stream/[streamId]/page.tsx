@@ -11,13 +11,22 @@ export default async function Page({
   const slug = (await params).streamId
   const ext = (await searchParams).ext
 
+  const mimeTypes: Record<string, string> = {
+    mkv: "video/x-matroska",
+    mp4: "video/mp4",
+    webm: "video/webm",
+    avc: "video/avc"
+  }
+
+  const MT = mimeTypes[ext]
+
   return <div>
-    {ext === "x" ? (<>
+    {ext !== "m3u8" ? (<>
     <video controls>
-      <source src={"http://wfdmakv.mmastertv.xyz/series/5157954183/1998162577/401406083.mkv"} type="video/x-matroska" />
+      <source src={ "http://wfdmakv.mmastertv.xyz/series/5157954183/1998162577/" + slug + "." + ext } type={MT} />
       Votre navigateur ne supporte pas la lecture de cette vidéo.
     </video>
-    </>) : (<> <Player slug={slug} ext={ext} type="series" /></>)}
+    </>) : (<> <Player slug={slug} ext={ext} type="series" mimeType={MT} /> </>)}
    
   </div>
 }

@@ -1,3 +1,4 @@
+import { Header } from "@iptv/components/header";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -27,7 +28,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+         <div className='w-dvw h-dvh bg-gray-50 flex flex-col'>
+      <Header />
+      <main className="flex-1 w-full p-10 flex flex-col overflow-hidden">{children}</main>
+    </div>
+        
       </body>
     </html>
   );

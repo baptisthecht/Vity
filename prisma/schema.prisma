@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Movie {
+  id                Int       @id @default(autoincrement())
+  num               Int
+  name              String
+  streamType        String    @map("stream_type")
+  streamId          Int       @map("stream_id")
+  streamIcon        String    @map("stream_icon")
+  rating            String
+  rating5Based      Float     @map("rating_5based")
+  added             Int
+  isAdult           Boolean   @map("is_adult")
+  categoryId        String    @map("category_id")
+  category          Category  @relation("MovieCategory", fields: [categoryId], references: [categoryId])
+}
+
+
+model Live {
+  id                  Int      @id @default(autoincrement())
+  num                 Int
+  name                String
+  streamType          String   @map("stream_type")
+  streamId            Int      @map("stream_id")
+  streamIcon          String   @map("stream_icon")
+  added               Int
+  isAdult             Boolean  @map("is_adult")
+  categoryId          String   @map("category_id")
+  category            Category @relation("LiveCategory", fields: [categoryId], references: [categoryId])
+}
+
+
+model Series {
+  id                Int       @id @default(autoincrement())
+  num               Int
+  name              String
+  seriesId          Int       @map("series_id")
+  cover             String
+  plot              String
+  cast              String
+  director         String?
+  genre             String
+  releaseDate      DateTime  @map("releaseDate")
+  lastModified      Int       @map("last_modified")
+  rating            String
+  rating5Based      Float     @map("rating_5based")
+  backdropPath      String[]  @map("backdrop_path")
+  youtubeTrailer    String    @map("youtube_trailer")
+  episodeRunTime    Int       @map("episode_run_time")
+  categoryId        String    @map("category_id")
+  category          Category  @relation("SeriesCategory", fields: [categoryId], references: [categoryId])
+}
+
+
+enum CategoryType {
+  MOVIE
+  LIVE
+  SERIES
+  OTHER
+}
+
+model Category {
+  id           Int          @id @default(autoincrement())
+  categoryId   String       @map("category_id") @unique
+  categoryName String       @map("category_name")
+  parentId     Int          @map("parent_id")
+  type         CategoryType
+  children     Category[]   @relation("CategoryHierarchy")
+  parent       Category?    @relation("CategoryHierarchy", fields: [parentId], references: [id])
+
+  movies       Movie[]      @relation("MovieCategory")
+  lives        Live[]       @relation("LiveCategory")
+  series       Series[]     @relation("SeriesCategory")
+}
+
+model MetaData {
+  id Int @id @default(autoincrement())
+  lastUpdate DateTime @default(now())
+  lastMovieUpdate DateTime @default(now())
+  lastLiveUpdate DateTime @default(now())
+  lastSeriesUpdate DateTime @default(now())
+}

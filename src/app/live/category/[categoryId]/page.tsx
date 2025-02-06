@@ -12,9 +12,9 @@ const fetchLiveStreams = cache(async (slug: string) => {
 export default async function Page({
   params,
 }: {
-  params: Promise<{ serieId: string }>;
+  params: Promise<{ categoryId: string }>;
 }) {
-  const slug = (await params).serieId;
+  const slug = (await params).categoryId;
   const items: Live[] = await fetchLiveStreams(slug);
 
   return (

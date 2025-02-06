@@ -1,37 +1,10 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@iptv/components/ui/accordion";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@iptv/components/ui/card";
+import { Serie } from "@iptv/types/serie";
 import { ACTION, BASE_URL } from "@iptv/utils/credentials";
 import Image from "next/image";
 import Link from "next/link";
 import { cache } from "react";
-
-type Serie = {
-  info: {
-    name: string;
-    plot: string;
-    genre: string;
-    cast: string;
-    releaseDate: string;
-    rating: string;
-    cover: string;
-  };
-  seasons: {
-    name: string;
-    season_number: string;
-  }[];
-  episodes: {
-    [key: string]: {
-      id: string;
-      title: string;
-      episode_num: number;
-      container_extension: string
-      info: {
-        duration: string;
-        movie_image: string
-      }
-    }[];
-  };
-};
 
 export const revalidate = 300;
 

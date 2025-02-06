@@ -1,5 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@iptv/components/ui/accordion";
 import { Card, CardDescription, CardHeader, CardTitle } from "@iptv/components/ui/card";
+import { Category } from "@iptv/types/category";
 import { ACTION, BASE_URL } from "@iptv/utils/credentials";
 import Link from "next/link";
 import { cache } from "react";
@@ -14,9 +15,9 @@ const fetchCategories = cache(async () => {
 
 
 export default async function Live() {
-  const categories = await fetchCategories();
+  const categories: Category[] = await fetchCategories();
 
-  const prefixes: string[] = Array.from(new Set(categories.map((category) => category.category_name.split("|")[0])));
+  const prefixes = Array.from(new Set(categories.map((category) => category.category_name.split("|")[0])));
 
   return (
     <Accordion type="single" collapsible className="w-full">

@@ -1,4 +1,5 @@
 import { Card, CardDescription, CardHeader, CardTitle } from "@iptv/components/ui/card";
+import { Serie } from "@iptv/types/serie";
 import { ACTION, BASE_URL } from "@iptv/utils/credentials";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,11 +19,11 @@ export default async function Page({
   params: Promise<{ categoryId: string }>;
 }) {
   const slug = (await params).categoryId;
-  const items = await fetchSeries(slug);
+  const items: Serie[] = await fetchSeries(slug);
 
   return (
     <div className="grid grid-cols-8 gap-2 overflow-scroll">
-      {items.map((item,i ) => (
+      {items.map((item, i) => (
         <Link key={i} href={"/series/explore/" + item.series_id}>
           <Card>
             <CardHeader>

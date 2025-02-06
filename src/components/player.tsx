@@ -34,7 +34,7 @@ export const Player = ({ slug, ext = "m38u", type = "live" }: { slug: string, ex
                 videoRef.current?.removeChild(element);
             };
         }
-    }, [slug]);
+    }, [baseStreamUrl, ext, slug]);
 
     return (
         <div data-vjs-player>

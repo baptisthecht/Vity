@@ -14,8 +14,8 @@ const fetchSeries = cache(async (slug: string) => {
   }).then((res) => res.json());
 });
 
-export default async function Page({ params }: { params: { serieId: string } }) {
-  const { serieId } = params;
+export default async function Page({ params }: { params: Promise<{ serieId: string }> }) {
+  const { serieId } = await params;
   const serie: Serie = await fetchSeries(serieId);
 
   if (!serie || !serie.info) {

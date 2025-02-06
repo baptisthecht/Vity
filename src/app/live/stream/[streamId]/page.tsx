@@ -6,11 +6,12 @@ export default async function Page({
   searchParams,
 }: {
   params: Promise<{ streamId: string }>
-  searchParams: { name: string, icon_uri: string }
+  searchParams: Promise<{ name: string, icon_uri: string }>
 }) {
   const slug = (await params).streamId
-  const name = searchParams.name
-  const icon_uri = searchParams.icon_uri
+  const sp = await searchParams
+  const name = sp.name
+  const icon_uri = sp.icon_uri
 
   return <div>
    <div className="flex items-center gap-2 p-2">

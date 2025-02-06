@@ -5,7 +5,7 @@ import "video.js/dist/video-js.css";
 
 export const Player = ({
   slug,
-  ext = "m38u",
+  ext = "m3u8",
   type = "live",
   mimeType = "application/vnd.apple.mpegurl",
 }: {

@@ -4,7 +4,7 @@ import { Film, RadioTower, Tv2 } from "lucide-react";
 const Home = () => {
   return (
     <>
-      <div className="grid grid-cols-3 gap-10 h-full">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 h-full">
         <TypeCard label="LIVE" href="/live" icon={RadioTower} />
         <TypeCard label="SERIES" href="/series" icon={Tv2} />
         <TypeCard label="FILMS" href="/movies" icon={Film} />

@@ -19,14 +19,15 @@ export default async function Page({
   }
 
   const MT = mimeTypes[ext]
-
-  return <div>
-    {ext !== "m3u8" ? (<>
-    <video controls>
-      <source src={ "http://wfdmakv.mmastertv.xyz/series/5157954183/1998162577/" + slug + "." + ext } type={MT} />
-      Votre navigateur ne supporte pas la lecture de cette vidéo.
-    </video>
-    </>) : (<> <Player slug={slug} ext={ext} type="series" mimeType={MT} /> </>)}
+return <Player slug={slug} ext={ext} type="series" mimeType={MT} />
+  // return <div>
+  //   {ext !== "m3u8" ? (<>
+  //   <video controls>
+  //     <source src={ "http://wfdmakv.mmastertv.xyz/series/5157954183/1998162577/" + slug + "." + ext } type={MT} />
+  //     Votre navigateur ne supporte pas la lecture de cette vidéo.
+  //   </video>
+  //   </>) : (<> 
+ 
+       {/* </>)} */}
    
-  </div>
 }

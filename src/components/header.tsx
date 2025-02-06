@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const Header = () => {
-  return <div className="w-full bg-primary text-primary-foreground uppercase font-bold text-center py-4 text-lg">Vity</div>;
+  return <Link href="/" className="w-full bg-primary text-primary-foreground uppercase font-bold text-center py-4 text-lg">Vity</Link>;
 };

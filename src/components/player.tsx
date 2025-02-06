@@ -27,7 +27,7 @@ export const Player = ({
       const player = videojs(element, {
         controls: true,
         autoplay: true,
-        height: 400,
+        fluid: true,
         sources: [
           {
             src: baseStreamUrl + slug + "." + ext,

@@ -22,7 +22,7 @@ export default async function Page({
   const items: Serie[] = await fetchSeries(slug);
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-8 gap-2 overflow-scroll">
+    <div className="grid grid-cols-1 sm:grid-cols-8 gap-2 overflow-scroll">
       {items.map((item, i) => (
         <Link key={i} href={"/series/explore/" + item.series_id}>
           <Card>

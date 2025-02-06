@@ -25,7 +25,7 @@ export default async function Series() {
         <AccordionItem value={prefix} key={prefix}>
           <AccordionTrigger>{prefix}</AccordionTrigger>
           <AccordionContent>
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2"> 
+            <div className="grid grid-cols-1 sm:grid-cols-5 gap-2"> 
               {categories
                 .filter((category) => category.category_name.startsWith(prefix))
                 .map((category) => (

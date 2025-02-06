@@ -21,7 +21,7 @@ export const Player = ({ slug, ext = "m38u", type = "live" }: { slug: string, ex
                 height: 400,
                 sources: [
                     {
-                        src: baseStreamUrl+ slug+ext,
+                        src: baseStreamUrl+ slug+"."+ext,
                         type: "application/x-mpegURL",
                     },
                 ],

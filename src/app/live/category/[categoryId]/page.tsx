@@ -18,7 +18,7 @@ export default async function Page({
   const items: Live[] = await fetchLiveStreams(slug);
 
   return (
-    <div className="grid grid-cols-5 gap-2">
+    <div className="grid grid-cols-5 gap-2 overflow-scroll">
       {items.map((item) => (
         <Link key={item.stream_id} href={"/live/stream/" + item.stream_id+ "?name=" + item.name+"&icon_uri="+item.stream_icon}>
           <Card>

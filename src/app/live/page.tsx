@@ -20,7 +20,7 @@ export default async function Live() {
   const prefixes = Array.from(new Set(categories.map((category) => category.category_name.split("|")[0])));
 
   return (
-    <Accordion type="single" collapsible className="w-full">
+    <Accordion type="single" collapsible className="w-full  overflow-scroll">
       {prefixes.map((prefix) => (
         <AccordionItem value={prefix} key={prefix}>
           <AccordionTrigger>{prefix}</AccordionTrigger>

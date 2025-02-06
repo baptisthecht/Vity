@@ -10,6 +10,10 @@ const font = DM_Sans({
 export const metadata: Metadata = {
   title: "Vity",
   description: "Developed by X",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default"
+  },
   icons: {
     icon: { rel: "shortcut icon", url: "/favicon.ico", type: "image/x-icon" },
     apple: [

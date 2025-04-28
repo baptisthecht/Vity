@@ -1,4 +1,6 @@
-export const BASE_URL = "http://wfdmakv.mmastertv.xyz/player_api.php?username=5157954183&password=1998162577&action=";
+const USERNAME = process.env.USERNAME;
+const PASSWORD = process.env.PASSWORD;
+export const BASE_URL = `http://wfdmakv.mmastertv.xyz/player_api.php?username=${USERNAME}&password=${PASSWORD}&action=`;
 
 export enum ACTION {
     GET_SERIES_CATEGORIES = "get_series_categories",
